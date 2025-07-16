@@ -19,3 +19,18 @@ jobs:
       # You can test your matrix by printing the current Python version
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+      # Install dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Lint with flake8
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 core/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      # Run tests with pytest
+      - name: Run tests with pytest
+        run: |
+          pip install pytest
+          pytest
