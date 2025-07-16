@@ -2,13 +2,17 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
 from sklearn.metrics import accuracy_score
 from models import utils
+import pickle
 
 # Random Forest Classifier Model with Hyperparameter Tuning
 # - Uses RandomizedSearchCV for hyperparameter tuning
 # - Applies stratified cross-validation
 # - Returns best accuracy, best parameters, and best cross-validation score
 
-def train_random_forest_with_random_search(X_train, y_train, X_test, y_test, random_state=17, verbose=1, n_jobs=-1, n_iter=50):
+
+def train_random_forest_with_random_search(
+    X_train, y_train, X_test, y_test, random_state=17, verbose=1, n_jobs=-1, n_iter=50
+):
     """
     Train a Random Forest classifier with hyperparameter tuning using RandomizedSearchCV.
 
@@ -34,11 +38,16 @@ def train_random_forest_with_random_search(X_train, y_train, X_test, y_test, ran
         cv=skf,
         verbose=verbose,
         n_jobs=n_jobs,
-        n_iter=n_iter
+        n_iter=n_iter,
     )
     forest_search.fit(X_train, y_train)
     best_params = forest_search.best_params_
     best_score = forest_search.best_score_
     y_pred = forest_search.predict(X_test)
     forest_search_acc = accuracy_score(y_test, y_pred)
+
+    # Save the trained model to a file
+    with open("outputs/random_forest_random_search_model.pkl", "wb") as f:
+        pickle.dump(forest_search, f)
+
     return forest_search_acc, best_params, best_score

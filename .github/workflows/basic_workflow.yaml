@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      # You can test your matrix by printing the current Python version
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       # Install dependencies
@@ -26,7 +25,9 @@ jobs:
       - name: Run training script
         run: |
           python core/main.py
-      - name: Save metrics or artifacts
+      - name: Check outputs folder contents
+        run: ls -lah outputs/
+      - name: Upload model artifacts
         uses: actions/upload-artifact@v4
         with:
           name: model-artifacts
