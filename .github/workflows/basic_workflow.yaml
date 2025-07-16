@@ -25,9 +25,9 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run training script
         run: |
-          python core/main.py  # Or whatever your training entry point is
+          python core/main.py
       - name: Save metrics or artifacts
         uses: actions/upload-artifact@v4
         with:
           name: model-artifacts
-          path: outputs/  # Folder where your model or logs are stored
+          path: outputs/
