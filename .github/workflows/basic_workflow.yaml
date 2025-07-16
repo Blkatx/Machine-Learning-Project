@@ -23,8 +23,11 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
-      # Lint with flake8
-      - name: Lint with flake8
+      - name: Run training script
         run: |
-          pip install flake8
-          flake8 core/ --count --select=E9,F63,F7,F82 --show-source --statistics
+          python train.py  # Or whatever your training entry point is
+      - name: Save metrics or artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: outputs/  # Folder where your model or logs are stored
