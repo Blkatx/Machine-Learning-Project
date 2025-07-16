@@ -5,7 +5,7 @@ This project aims to predict personality traits using various machine learning m
 
 ## Project Structure
 ```
-personality_dataset.csv         # Main dataset
+personality_dataset.csv        # Main dataset
 requirements.txt               # Python dependencies
 core/
     main.py                    # Main script for training and evaluation
@@ -15,10 +15,9 @@ core/
         tree_classifier_gs.py          # Decision Tree with Grid Search
         tree_classifier_random.py      # Decision Tree with Random Search
         random_forest_classifier.py    # Random Forest with Random Search
-        utils.py                      # Utility functions and parameter grids
+        utils.py                       # Utility functions and parameter grids
 results/
     model_results.csv          # Model performance results
-    roc_comparison.png         # ROC curve comparison plot
 ```
 
 ## Models Implemented
