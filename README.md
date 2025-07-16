@@ -1,4 +1,4 @@
-# Machine Learning Project: Personality Prediction
+# Machine Learning Project
 
 ## Overview
 This project aims to predict personality traits using various machine learning models. The workflow includes data preprocessing, model training, hyperparameter tuning, evaluation, and automated CI/CD with GitHub Actions.
@@ -32,19 +32,26 @@ All models use stratified train/test splits. The tuned models use cross-validati
 - **Accuracy**: All models report accuracy on the test set.
 - **Results**: Model metrics and best parameters are saved to `results/model_results.csv`.
 
+## Outputs
+- The trained models are stored here and are available to download when running the CI/CD.
+
 ## Data Preprocessing
 - The `preprocess.py` script loads and cleans the dataset, encodes categorical variables, and scales features as needed.
 
 ## How to Run
-1. Install dependencies:
+1. (Recommended) Create and activate a virtual environment:
+   ```
+   https://docs.python.org/3/library/venv.html
+   ```
+2. Install dependencies:
    ```
    pip install -r requirements.txt
    ```
-2. Run the main script:
+3. Run the main script:
    ```
    python core/main.py
    ```
-3. Check the `results/` folder for outputs.
+4. Check the `results/` folder for outputs.
 
 ## GitHub Actions CI/CD
 
@@ -61,8 +68,4 @@ This ensures your training pipeline runs automatically and model artifacts are s
 - Python 3.12+
 - See `requirements.txt` for all dependencies (including scikit-learn, pandas, matplotlib, tabulate, etc.)
 
-## License
-MIT License
-
 ---
-# Machine-Learning-Project
