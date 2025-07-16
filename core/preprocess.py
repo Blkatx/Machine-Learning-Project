@@ -1,9 +1,6 @@
 import pandas as pd
 import os
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold, GridSearchCV, RandomizedSearchCV
-from sklearn.ensemble import RandomForestClassifier
 
 
 def read_dataset(file_path):
