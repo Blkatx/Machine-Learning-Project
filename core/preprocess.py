@@ -48,6 +48,17 @@ def get_feature_columns(data_summary):
     return target_column, num_columns, cat_columns
 
 def categorical_encoding(data, cat_columns, target_column):
+    """
+    Encodes categorical columns and the target column in a DataFrame as binary integers.
+    For each column in `cat_columns`, values equal to 'Yes' are encoded as 1, others as 0.
+    For the `target_column`, values equal to 'Extrovert' are encoded as 1, others as 0.
+    Args:
+        data (pd.DataFrame): The input DataFrame containing categorical columns.
+        cat_columns (list of str): List of column names to encode as binary features.
+        target_column (str): The name of the target column to encode.
+    Returns:
+        pd.DataFrame: The DataFrame with encoded categorical and target columns.
+    """
     for col in cat_columns:
         data[col] = (data[col] == 'Yes').astype(int)
 
@@ -56,6 +67,16 @@ def categorical_encoding(data, cat_columns, target_column):
     return data
 
 def scale_numerical_features(data, num_columns):
+    """
+    Scales the specified numerical columns of a DataFrame using Min-Max normalization.
+
+    Parameters:
+        data (pd.DataFrame): The input DataFrame containing the data to be scaled.
+        num_columns (list of str): List of column names in 'data' to be scaled.
+
+    Returns:
+        pd.DataFrame: The DataFrame with the specified numerical columns scaled to the range [0, 1].
+    """
     scaler = MinMaxScaler()
     data[num_columns] = scaler.fit_transform(data[num_columns])
     return data

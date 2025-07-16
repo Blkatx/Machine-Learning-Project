@@ -9,6 +9,25 @@ from models import utils
 # - Returns best accuracy, best parameters, and best cross-validation score
 
 def train_tree_classifier_with_grid_search(X_train, X_test, y_train, y_test, random_state=17, verbose=1, n_jobs=-1):
+    """
+    Train a Decision Tree classifier with hyperparameter tuning using GridSearchCV.
+
+    Parameters:
+        X_train (array-like): Training feature data.
+        y_train (array-like): Training target labels.
+        X_test (array-like): Test feature data.
+        y_test (array-like): Test target labels.
+        random_state (int, optional): Random seed for reproducibility. Default is 17.
+        verbose (int, optional): Verbosity level for GridSearchCV. Default is 1.
+        n_jobs (int, optional): Number of jobs to run in parallel. Default is -1 (all CPUs).
+
+    Returns:
+        tuple: (test accuracy, best hyperparameters, best cross-validation score)
+
+    Notes:
+        - Uses parameters from utils.parameters["DecisionTreeClassifierGridSearch"].
+        - Employs StratifiedKFold to maintain class distribution across folds.
+    """
 
     param_grid = utils.parameters["DecisionTreeClassifierGridSearch"]
     clf = DecisionTreeClassifier(random_state=random_state)

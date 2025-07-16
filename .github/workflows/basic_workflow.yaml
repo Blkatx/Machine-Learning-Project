@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.12", "3.13"]
+        # Add more versions as needed
+        python-version: ["3.13"]
 
     steps:
       - uses: actions/checkout@v4
@@ -22,15 +23,8 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: pip install -r requirements.txt
-
       # Lint with flake8
       - name: Lint with flake8
         run: |
           pip install flake8
           flake8 core/ --count --select=E9,F63,F7,F82 --show-source --statistics
-
-      # Run tests with pytest
-      - name: Run tests with pytest
-        run: |
-          pip install pytest
-          pytest

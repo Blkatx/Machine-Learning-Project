@@ -9,6 +9,22 @@ from models import utils
 # - Returns best accuracy, best parameters, and best cross-validation score
 
 def train_random_forest_with_random_search(X_train, y_train, X_test, y_test, random_state=17, verbose=1, n_jobs=-1, n_iter=50):
+    """
+    Train a Random Forest classifier with hyperparameter tuning using RandomizedSearchCV.
+
+    Parameters:
+        X_train (array-like): Training feature data.
+        y_train (array-like): Training target labels.
+        X_test (array-like): Test feature data.
+        y_test (array-like): Test target labels.
+        random_state (int, optional): Random seed for reproducibility. Default is 17.
+        verbose (int, optional): Verbosity level for RandomizedSearchCV. Default is 1.
+        n_jobs (int, optional): Number of jobs to run in parallel. Default is -1 (all CPUs).
+        n_iter (int, optional): Number of parameter settings sampled in RandomizedSearchCV. Default is 50.
+
+    Returns:
+        tuple: (test accuracy, best hyperparameters, best cross-validation score)
+    """
     params = utils.parameters["RandomForestClassifierRandomSearch"]
     random_forest_clf = RandomForestClassifier(random_state=random_state)
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=random_state)
