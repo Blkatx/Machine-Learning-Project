@@ -1,5 +1,5 @@
 model,accuracy,best_params,cv_score
-Decision Tree Classifier,0.8896551724137931,,
+Decision Tree Classifier,0.8844827586206897,,
 Decision Tree (Grid Search),0.9224137931034483,"{'criterion': 'gini', 'max_depth': 6, 'max_features': 6, 'min_samples_leaf': 7}",0.9370689655172415
-Decision Tree (Random Search),0.9241379310344827,"{'min_samples_leaf': 11, 'max_features': 4, 'max_depth': 43, 'criterion': 'entropy'}",0.9379310344827587
-Random Forest (Random Search),0.9241379310344827,"{'n_estimators': 372, 'min_samples_leaf': 48, 'max_features': 2, 'max_depth': 39, 'criterion': 'entropy'}",0.9370689655172415
+Decision Tree (Random Search),0.9241379310344827,"{'min_samples_leaf': 18, 'max_features': 29, 'max_depth': 49, 'criterion': 'gini'}",0.9370689655172415
+Random Forest (Random Search),0.9241379310344827,"{'n_estimators': 353, 'min_samples_leaf': 11, 'max_features': 44, 'max_depth': 30, 'criterion': 'gini'}",0.9370689655172415
